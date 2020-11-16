@@ -1,0 +1,57 @@
+from tkinter import *
+
+
+
+
+win = Tk() #starts the window
+
+
+
+def fromPound(): #this gets the kilograms from the pounds
+    kiloGram = float(getPound.get()) * 2.205
+
+    table1.delete("1.0", END)
+    table1.insert(END, kiloGram)
+
+def fromCm(): #gets the feet from the centimeters
+    feet = float(getCm.get()) / 30.48
+    table2.delete("1.0", END)
+    table2.insert(END, feet)
+
+
+
+#this creates all thw widgets
+getPoundText = Label(win, text="Enter the weight in pounds")
+getPound = StringVar()
+getPound = Entry(win, textvariable=getPound)
+
+getCmText = Label(win, text="Enter your height in Centimeters")
+getCm = StringVar()
+getCm = Entry(win, textvariable = getCm)
+
+kilogramText = Label(win, text='Kilogram')
+centiText = Label(win, text="Centimeters")
+
+
+table1 = Text(win, height = 1, width = 20)
+table2 = Text(win, height=1, width = 20)
+
+
+b1 = Button(win, text="Convert Weight", command=fromPound)
+b2 = Button(win, text="Convert Height", command=fromCm)
+
+#the grids are used for placing the widgets at certain position
+
+getPoundText.grid(row=0, column=0)
+getPound.grid(row = 0, column = 1)
+kilogramText.grid(row=1, column = 0)
+table1.grid(row=2, column = 0)
+b1.grid(row = 0, column = 2)
+
+getCmText.grid(row=3, column=0)
+getCm.grid(row=3, column=1)
+centiText.grid(row = 4, column = 0)
+table2.grid(row=5, column = 0)
+b2.grid(row = 3, column = 2)
+
+win.mainloop()
